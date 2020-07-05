@@ -1,1 +1,1 @@
-# vuejs_study
+Vue.js学習用
