@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="css/stylesheet.css">
+
+    <div id = "app">
+    <h1 :style="[styleObject,baseStyles]">Hello</h1>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                styleObject:{
+                    color: 'red', 
+                    'background-color': 'blue'
+                },
+                baseStyles: {
+                    fontSize: '60px'
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="css/stylesheet.css">
+
+    <div id = "app">
+        <h1 :class="{red: isActive , 'bg-blue': !isActive}">Hello</h1>
+        <h1 :class="classObject">HelloComputed</h1>
+        <button @click="isActive = !isActive">切り替え</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                isActive: true
+            },
+            computed: {
+                classObject: function(){
+                    return {
+                        red: !this.isActive , 'bg-blue': this.isActive
+                        }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
