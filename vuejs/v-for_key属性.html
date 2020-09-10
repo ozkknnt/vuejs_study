@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="vue.js"></script>
+
+    <div id = "app">
+        <ul>
+            <!-- key属性を指定しないとinputタグを削除してくれない -->
+            <div v-for="fruit in fruits" :key="fruit"> 
+                <p>{{fruit}}</p>
+                <input type="text">
+            </div>
+        </ul>
+        <button @click="remove">先頭を削除</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                fruits: ['りんご', 'バナナ', 'ぶどう']
+            },
+            methods: {
+                remove: function() {
+                    this.fruits.shift()
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
