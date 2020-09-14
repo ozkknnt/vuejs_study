@@ -10,26 +10,25 @@
 
     <div id = "app1">
         <p>{{ message }}</p>
-    </div> 
-
-    <div id = "app2">
-        <p>{{ message }}</p>
+        <p>{{name}}</p>
+        <button @click = "name = 'ボタンから変更'">変更</button>
     </div> 
 
     <script>
-        new Vue({
+        var vm = new Vue({
             el: "#app1",
             data: {
-                message: "インスタンス1"
+                message: "こんにちは",
+                // この中にリアクティブにしたい変数を置いておく
+                name: "初期値"
             },
         });
 
-        new Vue({
-            el: "#app2",
-            data: {
-                message: "インスタンス2"
-            },
-        });
+        // vm.message = "変えました"
+        // vm.name = "name"
+
+        console.log(vm);
+
     </script>
 
 </body>
