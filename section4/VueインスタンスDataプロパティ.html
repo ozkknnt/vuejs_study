@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="vue.js"></script>
+
+    <div id = "app1">
+        <p>{{ message }}</p>
+        <p>{{name}}</p>
+        <button @click = "name = 'ボタンから変更'">変更</button>
+    </div> 
+
+    <script>
+        var data = {
+                message: "こんにちは",
+                name: "初期値"
+            }
+
+        var vm = new Vue({
+            el: "#app1",
+            data: data
+        });
+
+        // $が着いているプロパティはユーザが使用できるプロパティ
+        console.log(data === vm.$data); //=== は型も値も同一
+        console.log(vm)
+
+    </script>
+
+</body>
+</html>
