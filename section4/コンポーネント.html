@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="vue.js"></script>
+
+    <div id = "app1">
+        <hello></hello>
+        <hello></hello>
+    </div> 
+
+
+    <div id="app2"></div>
+
+    <div id="app3"></div>
+
+
+    <script>
+        var data = {
+            message: "インスタンス1",
+            name:"name"
+        };
+        
+        // コンポーネント複製できる
+        Vue.component('hello', {
+            template: '<p>こんにちは</p>'
+
+        });
+
+        var vm = new Vue({
+            el: "#app1",
+            data: data,
+            computed: {
+                myData: function() {
+                    return this.$data;
+                }
+            }
+        });
+
+        new Vue({
+            data: {
+                name: '名前'
+            },
+            template: '<h1>こんにちは、{{name}}</h1>'   //タグごとtempalateプロパティで指定できる
+        }).$mount('#app2')
+
+        new Vue({
+            data: {
+                name: '名前2'
+            },
+            render: function(createElement){
+                return createElement('h1','こんにちは、' + this.name);
+            }
+        }).$mount('#app3')
+
+　
+    </script>
+
+</body>
+</html>
