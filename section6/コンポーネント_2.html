@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="vue.js"></script>
+
+    <div id = "app">
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+        <hr>
+    </div> 
+
+    <div id = "app2">
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+    </div> 
+
+    <script>
+        // コンポーネントの場合はdata は関数である必要がある。
+        // オブジェクトだと同一のオブジェクトを参照してしまうため。
+        // 下記のコードを有効にするとmy-componetは常に同一値になる
+//        var data = {
+//            number: 12
+//        }
+
+
+        //ローカル登録
+        var component = {
+            data: function() {
+                return {
+                    number: 12
+                }
+            },
+            template: '<p>いいね({{number}})<button @click="increment">+1</button></p>',
+            methods: {
+                increment: function() {
+                    this.number +=1;
+                }
+            }
+        }
+
+        //グローバル登録
+        // Vue.component('my-component', {
+        //     data: function() {
+        //         return {
+        //             number: 12
+        //         }
+        //     },
+        //     template: '<p>いいね({{number}})<button @click="increment">+1</button></p>',
+        //     methods: {
+        //         increment: function() {
+        //             this.number +=1;
+        //         }
+        //     }
+        // });
+
+        new Vue({
+            el: "#app",
+            components: {
+                'my-component': component
+            }
+        });
+　
+        new Vue({
+            el: "#app2",
+        });
+
+    </script>
+
+</body>
+</html>
