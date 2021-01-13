@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>いいね({{number}})</p>
+    <p>いいね({{number / 2}})</p>
     <button @click="increment">+1</button>
   </div>
 </template>
@@ -16,10 +16,7 @@
 // }
 //ES５の書き方
 export default {
-  data: function() {
-    return {number: 5
-    };
-  },
+  props: [ "number" ],
   methods:{
     increment() {
       this.number +=1; 
