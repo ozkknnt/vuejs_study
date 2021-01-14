@@ -2,8 +2,8 @@
   <div>
     <LikeHeader></LikeHeader>
     <h2>{{ number }}</h2>
-    <LikeNumber v-bind:number = "number"></LikeNumber>
-    <LikeNumber :number = "number"></LikeNumber>
+    <LikeNumber></LikeNumber>
+    <LikeNumber :total-number = "number" test-props = "test"></LikeNumber>
   </div>
 </template>
 

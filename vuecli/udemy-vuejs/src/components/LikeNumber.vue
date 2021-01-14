@@ -1,7 +1,8 @@
 <template>
   <div>
-    <p>いいね({{number / 2}})</p>
+    <p>いいね({{ halfNumber / 2}})</p>
     <button @click="increment">+1</button>
+    <p>{{ testProps }}</p>
   </div>
 </template>
 
@@ -16,7 +17,22 @@
 // }
 //ES５の書き方
 export default {
-  props: [ "number" ],
+  //props: ["totalNumber", "testProps"]
+  props: {
+    totalNumber: { // バリデーションができる
+      type: Number,  //型指定
+      //required: true, //必須
+      default: 100
+    },
+    testProps: {
+      type: String
+    }
+  },
+  computed: {
+    halfNumber() {
+      return this.totalNumber / 2
+    }
+  },
   methods:{
     increment() {
       this.number +=1; 
