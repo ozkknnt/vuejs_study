@@ -2,7 +2,8 @@
   <div>
     <LikeHeader></LikeHeader>
     <h2>{{ number }}</h2>
-    <LikeNumber></LikeNumber>
+    <LikeNumber :total-number = "number" v-on:my-click="number = $event"></LikeNumber>
+    <!-- v-on:my-click="number = $event" のnumber 以降はJavascript -->
     <LikeNumber :total-number = "number" test-props = "test"></LikeNumber>
   </div>
 </template>
