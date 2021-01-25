@@ -11,6 +11,7 @@
       <template v-slot:number>
         <h2>{{ number }}</h2>
       </template>
+      <h3>デフォルトslot3</h3>
       
     </LikeHeader>
     <LikeNumber :total-number = "number" v-on:my-click="number = $event"></LikeNumber>
