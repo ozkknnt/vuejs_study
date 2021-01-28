@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>サンプル</title>
+</head>
+<body>
+
+    <script src="https://jp.vuejs.org/js/vue.js"></script>
+
+
+    <div id="app">
+        {{price | number_format}}
+    </div>
+
+    <script>
+
+    Vue.filter('number_format',
+        function(val){
+            return val.toLocaleString();
+        }
+    )
+    
+
+    var app = new Vue({
+        el:'#app',
+        data: {
+            price: 1000
+            }
+        });
+    </script>
+
+</body>
+</html>
