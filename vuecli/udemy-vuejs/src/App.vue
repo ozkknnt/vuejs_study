@@ -3,8 +3,11 @@
     <LikeHeader>
       <!-- 名前がついていないものはまとめてtemplateタグをつけているdefaultという名のv-slot -->
       <h3>デフォルトslot一番上 </h3>
-      <template v-slot:title>
-        <h1>トータルのいいね数</h1>
+
+      <!-- slotプロパティ -->
+      <template v-slot:title="slotProps">
+        <h1>こんにちは</h1>
+        <h2>{{ slotProps.user.firstName }}</h2>
       </template>
       <!-- template v-slot指定していないためデフォルトslotに表示される -->
       <h3>デフォルトslot</h3>

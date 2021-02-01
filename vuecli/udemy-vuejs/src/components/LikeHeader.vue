@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- 親の中にslotのコンテンツがない場合に表示されるフォールバックコンテンツ -->
-        <slot name="title">デフォルトのタイトル</slot> 
+        <slot name="title" v-bind:user="user" text="text">デフォルトのタイトル</slot> 
         <slot></slot>
         <hr>
         <slot name="number" >デフォルトのタイトル</slot> 
@@ -11,6 +11,13 @@
 
 <script>
 export default {
-    props: ["headerText"]
-}
+    data() {
+        return {
+            user: {
+                firstName: "Jack",
+                lastName: "Donald"
+            }
+        };
+    }
+};
 </script>
