@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>クリックイベント</title>
+</head>
+<body>
+  <script src="https://jp.vuejs.org/js/vue.js"></script>
+  <div id="app">
+    <template v-if="stock >= 1">
+      <span class="num">残り{{stock}}個</span>
+      <button class="btn" v-on:click="onDeleteItem">削除</button>
+    </template>
+    {{message}}
+  </div>
+  
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        stock: 10
+      },
+      methods: {
+        onDeleteItem: function(){
+          this.stock--;
+        }
+      },
+      watch:{
+        // 在庫数が変化したときに呼び出されるハンドラ
+        // watcherに登録された関数オブジェクトは引数に変化後の値、変化前の値を受け取る
+        stock: function(newStock,oldStock){
+          if (newStock == 0){
+            this.message = "売り切れ";
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
