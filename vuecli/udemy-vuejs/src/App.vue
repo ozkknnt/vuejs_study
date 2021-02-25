@@ -15,6 +15,8 @@
         <h2>{{ number }}</h2>
       </template>
       <h3>デフォルトslot3</h3>
+      <!--  -->
+      <template #title></template>
       
     </LikeHeader>
     <LikeNumber :total-number = "number" v-on:my-click="number = $event"></LikeNumber>
@@ -29,7 +31,8 @@ import LikeHeader from "./components/LikeHeader.vue";
 export default {
   data() {
     return {
-      number:10
+      number:10,
+      title: "title"
     };
   },
   components: {
