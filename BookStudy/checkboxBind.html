@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHECKBOX v-model</title>
+</head>
+<body>
+    <script src="vue.js"></script>
+
+    <div id ="app">
+        <label>ケーキはお好きですか？： {{answer}}</label><br>
+        <input id="cake" type="checkbox" v-model="answer" true-value="はい" false-value="いいえ">
+        <label for="cake">チェックしてください</label>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                answer: 'はい'
+            }
+        });
+    </script>
+</body>
+</html>
