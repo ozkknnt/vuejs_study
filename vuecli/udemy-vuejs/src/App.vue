@@ -14,21 +14,78 @@
     
     <div>
       <h2>イベントのフォーム</h2>
+      <!-- .lazy修飾子 -->
       <label for="title">タイトル</label>
       <input 
         id="title" 
         type="text"
         v-model.lazy="eventData.title"
       >
-      <p>{{eventData.title}}</p>
+      <pre>{{eventData.title}}</pre>
 
+      <!-- .number修飾子 -->
       <label for="maxNumber">最大人数</label>
       <input 
         id="maxNumber" 
         type="text"
         v-model.number="eventData.maxNumber"
       >
-      <p>{{typeof eventData.maxNumber}}</p>
+      <p>{{eventData.maxNumber}}</p>
+
+      <!-- .trim修飾子 -->
+      <label for="host">主催者</label>
+      <input 
+        id="host" 
+        type="text"
+        v-model.trim="eventData.host"
+      >
+      <pre>{{eventData.host}}</pre>
+      
+      <!-- 複数行データバインディング -->
+      <label for="detail">イベントの内容</label>
+      <textarea 
+        id="detail" 
+        rows="10" 
+        cols="30" 
+        v-model="eventData.detail">
+      </textarea>
+      <p style="white-space: Pre;">{{eventData.detail}}</p>
+
+      <!-- 単体のcheckboxの双方向データバインディング -->
+      <input 
+        type="checkbox" 
+        id="isPrivate"
+        v-model= "eventData.isPrivate">
+      <label for="isPrivate">非公開</label>
+      <p>{{eventData.isPrivate}}</p>
+
+      <!-- 複数のcheckboxの双方向データバインディング -->
+      <p>参加条件</p>
+      <input 
+        type="checkbox"
+        id="10"
+        value="10代"
+        v-model="eventData.target"
+      >
+      <label for="10">10代</label>
+      
+      <input 
+        type="checkbox"
+        id="20"
+        value="20代"
+        v-model="eventData.target"
+      >
+      <label for="20">20代</label>
+
+      <input 
+        type="checkbox"
+        id="30"
+        value="30代"
+        v-model="eventData.target"
+      >
+      <label for="30">30代</label>
+
+      <p>{{eventData.target}}</p>
     </div>
   
   </div>
@@ -45,8 +102,12 @@ export default {
       number:10,
       currentComponent: "Home",
       eventData:{
-        title: "タイトル",
-        maxNumber: 0
+        title: "",
+        maxNumber: 0,
+        host: "",
+        detail: "",
+        isPrivate: false,
+        target: []
 
       }
     };
