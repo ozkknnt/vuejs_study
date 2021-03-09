@@ -12,7 +12,7 @@
     <!-- <About v-if="currentComponent ==='About'"></About> -->
     <!-- <Home v-if="currentComponent ==='Home'"></Home> -->
     
-    <div>
+    <div style="padding:10rem;">
       <h2>イベントのフォーム</h2>
       <!-- .lazy修飾子 -->
       <label for="title">タイトル</label>
@@ -86,6 +86,37 @@
       <label for="30">30代</label>
 
       <p>{{eventData.target}}</p>
+
+      <!-- ラジオボタンの双方向バインディング  -->
+      <p>参加費</p>
+      <input 
+        type="radio" 
+        id="free"
+        value="無料"
+        v-model ="eventData.price"
+      >
+      <label for="free">無料</label>
+
+      <input 
+        type="radio" 
+        id="free"
+        value="有料"
+        v-model ="eventData.price"
+      >
+      <label for="paid">有料</label>
+      <p>{{eventData.price}}</p>
+
+      <!-- セレクトボックスの双方向バインディング -->
+      <p>開催場所</p>
+      <select v-model="eventData.location" multiple>
+        <option 
+          v-for="location in locations" 
+          :key="location"
+        >{{location}}
+        </option>
+      </select>
+      <p>{{eventData.location}}</p>
+
     </div>
   
   </div>
@@ -101,13 +132,16 @@ export default {
     return {
       number:10,
       currentComponent: "Home",
+      locations: ["東京","大阪","名古屋"],
       eventData:{
         title: "",
         maxNumber: 0,
         host: "",
         detail: "",
         isPrivate: false,
-        target: []
+        target: [],
+        price: "無料",
+        location: []
 
       }
     };
