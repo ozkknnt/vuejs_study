@@ -6,24 +6,32 @@
     <!-- Computedプロパティ -->
     <h2>{{ upperCaseTitle }}</h2> 
     <!-- filter -->
-    <h2>{{ title | upperCase  }}</h2>
-    <h2>{{ subTitle | upperCase  }}</h2>
+    <h2>{{ title | lowerCase | upperCase }}</h2>
+    <h2>{{ subTitle | lowerCase  }}</h2>
+    <p>{{ number }}</p>
+    <button @click ="number++">+1</button>
+    <CountNumber></CountNumber>
   </div>
 </template>
 
 <script>
+import CountNumber from "./CountNumber";
+import { tokyoNumber } from "@/tokyoNumber.js"
+
 export default {
+  mixins: [tokyoNumber],
   data() {
     return {
-      tmpData: "hello",
-      title:"Welcome to Tokyo",
-      subTitle: "Tokyo is a great city"
+      tmpData: "hello"
     };
   },
   computed: {
     upperCaseTitle(){
       return this.title.toUpperCase();
     }
+  },
+  components: {
+    CountNumber
   },
   // ローカルのカスタムディレクティブ
   directives:{
