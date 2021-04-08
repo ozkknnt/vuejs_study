@@ -7,6 +7,11 @@ Vue.component("LikeNumber", LikeNumber);
 Vue.filter("upperCase", function (value) {
   return value.toUpperCase();
 });
+Vue.mixin({
+  created() {
+    console.log("global mixin");
+  }
+})
 // Vue.directive("border", {
 //   bind(el, binding, vnode) {
 //     // ディレクティブに初めて対象の要素に紐付いたとき
