@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カレンダーVue</title>
+</head>
+<body>
+  <script src="vue.js"></script>
+
+  <div id = "app">
+    <p>ご希望到着日:{{arrival_date}}</p>
+    <input type="date" v-model="arrival_date">
+  </div>
+</body>
+
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      arrival_date: null
+    },
+    created: function(){
+      // 初期値を設定する
+      this.arrival_date = this.formatDate(new Date());
+    },
+    methods:{
+      formatDate: function(dt){
+        var y = dt.getFullYear();
+        var m = ('00' + (dt.getMonth()+1)).slice(-2);
+        var d = ('00' + dt.getDate()).slice(-2);
+        var result = y + '-' + m + '-' + d;
+        return result;
+      }
+    }
+  })
+</script>
+</html>
