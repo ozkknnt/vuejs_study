@@ -1,10 +1,18 @@
 <template>
   <div class="main">
     <button @click="show = !show">切り替え</button>
-    <transition name="fade">
+    <transition 
+      enter-active-class="animate__animated animate__bounce"
+      leave-active-class="animate__animated animate__shakeX"
+      appear
+    >
       <p v-if="show">hello</p>
     </transition>
-    <transition name="slide" type="animation">
+    <transition 
+      name="slide" 
+      type="animation" 
+      appear
+    >
       <p v-if="show">bye</p>
     </transition>
   </div>
@@ -27,7 +35,7 @@ export default {
 }
 .fade-enter-active{
   /* 現れる時のトランジションの状態 */
-  transition: opacity 0.5s;
+  transition: opacity 5s;
 }
 .fade-enter-to{
   /* 現れる時の最後の状態 */
@@ -39,7 +47,7 @@ export default {
 }
 .fade-leave-active{
   /* 消える時のトランジションの状態 */
-  transition: opacity 0.5s;
+  transition: opacity 5s;
 
 }
 .fade-leave-to{
