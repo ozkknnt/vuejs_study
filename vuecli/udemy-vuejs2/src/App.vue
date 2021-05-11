@@ -4,7 +4,7 @@
     <button @click="myAnimation = 'fade'">Fade</button>
     <p>{{myAnimation}}</p>
     
-    <transition name="fade">
+    <transition name="fade" mode="out-in">
       <p v-if="show" key="bye">さよなら</p>
       <p v-if="!show" key="hello">こんにちは</p>
     </transition>
@@ -45,7 +45,7 @@ export default {
 }
 .fade-enter-active{
   /* 現れる時のトランジションの状態 */
-  transition: opacity 5s;
+  transition: opacity 0.5s;
 }
 .fade-enter-to{
   /* 現れる時の最後の状態 */
@@ -57,7 +57,7 @@ export default {
 }
 .fade-leave-active{
   /* 消える時のトランジションの状態 */
-  transition: opacity 5s;
+  transition: opacity 0.5s;
 
 }
 .fade-leave-to{
