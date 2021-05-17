@@ -11,6 +11,13 @@
 
 
     <button @click="show = !show">切り替え</button>
+    <br>
+    <button @click="myComponent = 'ComponentA'">ComponentA</button>
+    <button @click="myComponent = 'ComponentB'">ComponentB</button>
+    <transition name="fade" mode="out-in">
+      <component :is= "myComponent"></component>
+    </transition>
+
     <transition 
       enter-active-class="animate__animated animate__bounce"
       leave-active-class="animate__animated animate__shakeX"
@@ -19,7 +26,7 @@
       <p v-if="show">hello</p>
     </transition>
     <transition 
-      :name="myAnimation" 
+      :name="myAnimation"
       appear
     >
       <p v-if="show">bye</p>
@@ -28,11 +35,18 @@
 </template>
 
 <script>
+import ComponentA from "./components/ComponentA"
+import ComponentB from "./components/ComponentB"
 export default {
+  components: {
+    ComponentA,
+    ComponentB
+  },
   data() {
     return {
       show: true,
-      myAnimation: 'slide'
+      myAnimation: 'slide',
+      myComponent: "ComponetA"
     };
   }
 }
