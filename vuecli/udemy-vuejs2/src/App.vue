@@ -65,19 +65,37 @@ export default {
     };
   },
   methods: {
-    beforeEnter(){},
-    enter(){},
-    afterEnter(){},
-    enterCancelled(){},
-    beforeLeave(){},
-    leave(){},
-    afterLeave(){},
-    leaveCancelled(){},
+    beforeEnter(el){
+      // 現れる前
+    },
+    enter(el, done){
+      // 現れた時
+      el.style.width = "100px";
+    },
+    afterEnter(el){
+      // 現れる後
+    },
+    enterCancelled(el){
+      // 現れるアニメーションがキャンセルされたとき
+    },
+    beforeLeave(el){
+      // 消える前
+    },
+    leave(el, done){
+      // 消える時
+    },
+    afterLeave(el){
+      // 消えた後
+    },
+    leaveCancelled(el){
+      // 消えるアニメーションがキャンセルされたとき
+      // v-showと一緒に使うときだけ有効になる
+    },
   }
 }
 </script>
 
-<style scoped>
+<styl scoped>
 .circle{
   width: 200px;
   height: 200px;
@@ -142,4 +160,4 @@ export default {
   padding-top: 5rem;
   text-align: center;
 }
-</style>
+</styl>
