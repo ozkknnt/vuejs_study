@@ -3,12 +3,6 @@
     <button @click="myAnimation = 'slide'">Slide</button>
     <button @click="myAnimation = 'fade'">Fade</button>
     <p>{{myAnimation}}</p>
-
-    <transition name="fade" mode="out-in">
-      <p v-if="show" key="bye">さよなら</p>
-      <p v-if="!show" key="hello">こんにちは</p>
-    </transition>
-
     <br>
     <button @click="add">追加</button>
     <ul style="width: 200px; margin:auto;">
@@ -47,6 +41,13 @@
       <component :is= "myComponent"></component>
     </transition>
 
+
+
+
+    <transition name="fade" mode="out-in">
+      <p v-if="show" key="bye">さよなら</p>
+      <p v-else key="hello">こんにちは</p>
+    </transition>
     <transition 
       enter-active-class="animate__animated animate__bounce"
       leave-active-class="animate__animated animate__shakeX"
@@ -58,14 +59,14 @@
       :name="myAnimation"
       appear
     >
-      <p v-if="show">bye</p>
+      <p v-show="show">bye</p>
     </transition>
   </div>
 </template>
 
 <script>
-import ComponentA from "./components/ComponentA"
-import ComponentB from "./components/ComponentB"
+import ComponentA from "./components/ComponentA.vue";
+import ComponentB from "./components/ComponentB.vue";
 export default {
   components: {
     ComponentA,
@@ -76,8 +77,8 @@ export default {
       numbers: [0,1,2],
       nextNumber:3,
       show: true,
-      myAnimation: 'slide',
-      myComponent: "ComponetA"
+      myAnimation: "slide",
+      myComponent: "ComponentA"
     };
   },
   methods: {
@@ -93,14 +94,14 @@ export default {
     },
     beforeEnter(el){
       // 現れる前
-      el.style.transform = `scale(0)`;
+      el.style.transform = "scale(0)";
     },
     enter(el, done){
       // 現れた時
       let scale = 0;
       const interval = setInterval(()=> {
         el.style.transform = `scale(${scale})`;
-        scale += 0.1
+        scale += 0.1;
         if (scale >1 ){
           clearInterval(interval);
           done();
@@ -120,14 +121,14 @@ export default {
       // 消える時
       let scale = 1;
       const interval = setInterval(()=> {
-        el.style.transform = `cale(${scale})`;
-        scale -= 0.1
+        el.style.transform = `scale(${scale})`;
+        scale -= 0.1;
         if (scale < 0  ){
           clearInterval(interval);
           done();
         }
       },20);
-    },
+    }
     // afterLeave(el){
     //   // 消えた後
     // },
@@ -136,7 +137,7 @@ export default {
     //   // v-showと一緒に使うときだけ有効になる
     // },
   }
-}
+};
 </script>
 
 <style scoped>
@@ -147,13 +148,18 @@ export default {
   border-radius: 100px;
   background-color: deeppink;
 }
+
+
+.fade-move{
+  transition: transform 10s;
+}
 .fade-enter{
   /* 現れる時の最初の状態 */
   opacity: 0;
 }
 .fade-enter-active{
   /* 現れる時のトランジションの状態 */
-  transition: opacity 0.5s;
+  transition: opacity 1s;
 }
 .fade-enter-to{
   /* 現れる時の最後の状態 */
@@ -165,7 +171,9 @@ export default {
 }
 .fade-leave-active{
   /* 消える時のトランジションの状態 */
-  transition: opacity 0.5s;
+  transition: opacity 1s;
+  position: absolute;
+  width: 200px;
 
 }
 .fade-leave-to{
@@ -173,9 +181,7 @@ export default {
   opacity: 0;
 }
 
-.slide-enter{
-
-}
+.slide-enter,
 .slide-leave-to{
   opacity: 0;
 }
@@ -200,7 +206,7 @@ export default {
 
 .main {
   width: 70%;
-  mergin: auto;
+  margin: auto;
   padding-top: 5rem;
   text-align: center;
 }
